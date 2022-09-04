@@ -13,7 +13,7 @@ function Book({ book }) {
             backgroundImage: `url("${book.imageLinks.smallThumbnail}")`,
           }}
         ></div>
-        <ShelfChanger />
+        <ShelfChanger currentShelf={book.shelf} />
       </div>
       <div className="book-title">{book.title}</div>
       <div className="book-authors">{book.authors.join(", ")}</div>

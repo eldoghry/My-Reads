@@ -8,7 +8,7 @@ function ListBook({ books, gotToSearchPage }) {
   useEffect(() => {
     const uniqueShelfs = [...new Set(books.map((b) => b.shelf))];
     setShelfs(uniqueShelfs);
-  }, []);
+  }, [books]);
 
   return (
     <div className="list-books">
@@ -17,12 +17,12 @@ function ListBook({ books, gotToSearchPage }) {
       </div>
       <div className="list-books-content">
         <div>
-          {shelfs.map((shelf) => {
+          {shelfs.map((shelf, index) => {
             const shelfBooks = books.filter((b) => b.shelf === shelf);
 
             return (
               <BookShelf
-                // key={shelf}
+                key={index}
                 title={shelf.replace(/([A-Z]+)/g, " $1")}
                 shelfBooks={shelfBooks}
               />
