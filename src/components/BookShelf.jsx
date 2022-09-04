@@ -1,7 +1,7 @@
 import ShelfChanger from "./ShelfChanger";
 import Book from "./Book";
 
-function BookShelf({ title }) {
+function BookShelf({ shelfBooks, title }) {
   /*
         need:
         - shelf title
@@ -13,9 +13,11 @@ function BookShelf({ title }) {
       <h2 className="bookshelf-title">{title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          <li>
-            <Book />
-          </li>
+          {shelfBooks.map((book) => (
+            <li>
+              <Book key={book.id} book={book} />
+            </li>
+          ))}
         </ol>
       </div>
     </div>
