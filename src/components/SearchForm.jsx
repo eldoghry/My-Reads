@@ -1,10 +1,10 @@
 import React from "react";
 
-function SearchForm({ showSearchpage }) {
+function SearchForm({ gotToSearchPage }) {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a className="close-search" onClick={showSearchpage}>
+        <a className="close-search" onClick={gotToSearchPage}>
           Close
         </a>
         <div className="search-books-input-wrapper">
