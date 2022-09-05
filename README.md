@@ -1,6 +1,6 @@
 # MyReads Project
 
-This Project small library system created by React, Html, CSS.
+This Project small library system created using React, Html, CSS.
 UI(Html, CSS) built by [Udacity](https://github.com/udacity)
 
 ## Setup
