@@ -3,6 +3,11 @@ import BookShelf from "./BookShelf";
 import Loader from "./Loader";
 import SearchButton from "./SearchButton";
 
+const normalizeTitle = (str) => {
+  let s = str.replace(/([A-Z]+)/g, " $1");
+  return s[0].toUpperCase().concat(s.slice(1));
+};
+
 function ListBook({ books, updateBooks }) {
   const [shelfs, setShelfs] = useState([]);
 
@@ -27,7 +32,7 @@ function ListBook({ books, updateBooks }) {
               return (
                 <BookShelf
                   key={index}
-                  title={shelf.replace(/([A-Z]+)/g, " $1")}
+                  title={normalizeTitle(shelf)}
                   shelfBooks={shelfBooks}
                   updateBooks={updateBooks}
                 />
