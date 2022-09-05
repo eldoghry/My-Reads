@@ -12,12 +12,6 @@ function App() {
     await BookAPI.update(newBook, newShelf);
     const res = await BookAPI.getAll();
     setBooks([...res]);
-
-    // const otherBooks = books.filter((b) => b.id !== newBook.id);
-    // setBooks([...otherBooks, newBook]);
-    // console.log("updated book", newBook);
-    console.log("front books", books);
-    // await refresh();
   };
 
   useEffect(() => {
@@ -27,8 +21,6 @@ function App() {
       const allBooks = async () => {
         const res = await BookAPI.getAll();
         setBooks([...res]);
-        console.log(books);
-        console.log("mounted, load once");
       };
 
       allBooks();
@@ -36,7 +28,6 @@ function App() {
 
     return () => {
       mounted = true;
-      console.log("unmounted");
     };
   }, []);
 

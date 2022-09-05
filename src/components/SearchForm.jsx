@@ -17,20 +17,21 @@ function SearchForm({ updateBooks }) {
   };
 
   useEffect(() => {
+    setQuery([]);
+    setError("");
+
     if (search.length) {
-      setQuery([]);
       setIsLoading(true);
       const searchBook = async () => {
         const res = await BookAPI.search(search, 20);
-        console.log(res);
         setIsLoading(false);
 
         if (!res.error) {
           setQuery([...res]);
           setError("");
         } else {
-          setError(res.error);
           setQuery([]);
+          setError(res.error);
         }
       };
 
