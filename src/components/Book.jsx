@@ -1,5 +1,4 @@
 import ShelfChanger from "./ShelfChanger";
-import * as BookAPI from "./../BooksAPI";
 
 function Book({ book, updateBooks }) {
   const updateBookShelf = (shelf) => {
@@ -25,7 +24,9 @@ function Book({ book, updateBooks }) {
         />
       </div>
       <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.authors.join(", ")}</div>
+      <div className="book-authors">
+        {book.length && book.authors.join(", ")}
+      </div>
     </div>
   );
 }

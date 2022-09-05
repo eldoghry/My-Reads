@@ -48,7 +48,10 @@ function App() {
           exact
           element={<ListBook books={books} updateBooks={updateBooks} />}
         />
-        <Route path="/search" element={<SearchForm />} />
+        <Route
+          path="/search"
+          element={<SearchForm updateBooks={updateBooks} />}
+        />
       </Routes>
     </div>
   );

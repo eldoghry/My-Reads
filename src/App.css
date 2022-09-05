@@ -208,3 +208,17 @@ body,
     transform: rotate(360deg);
   }
 }
+
+/* Error */
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.error p {
+  font-weight: 500;
+  font-style: 30px;
+  text-transform: capitalize;
+}
