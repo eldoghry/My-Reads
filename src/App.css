@@ -210,14 +210,14 @@ body,
 }
 
 /* Error */
-.error {
+.message {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.error p {
+.message p {
   font-weight: 500;
   font-style: 30px;
   text-transform: capitalize;

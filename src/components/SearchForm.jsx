@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import BookGrid from "./BookGrid";
 import * as BookAPI from "./../BooksAPI";
 import Loader from "./Loader";
-import Error from "./Error";
+import Message from "./Message";
 
 function SearchForm({ updateBooks }) {
   const [search, setSearch] = useState("");
@@ -58,7 +58,9 @@ function SearchForm({ updateBooks }) {
       <div className="search-books-results">
         {isLoading && <Loader />}
 
-        {error === "empty query" && <Error msg="no result found" />}
+        {error === "empty query" && (
+          <Message msg="no result found" type="error" />
+        )}
 
         {query && query.length > 0 && (
           <BookGrid books={query} updateBooks={updateBooks} />

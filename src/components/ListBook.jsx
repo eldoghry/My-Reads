@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import BookShelf from "./BookShelf";
 import Loader from "./Loader";
+import Message from "./Message";
 import SearchButton from "./SearchButton";
 
 const normalizeTitle = (str) => {
@@ -10,10 +11,13 @@ const normalizeTitle = (str) => {
 
 function ListBook({ books, updateBooks }) {
   const [shelfs, setShelfs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const uniqueShelfs = [...new Set(books.map((b) => b.shelf))];
     setShelfs(uniqueShelfs);
+    setIsLoading(false);
   }, [books]);
 
   return (
@@ -22,9 +26,9 @@ function ListBook({ books, updateBooks }) {
         <h1>MyReads</h1>
       </div>
       <div className="list-books-content">
-        {!books.length && <Loader />}
+        {isLoading && <Loader />}
 
-        {books.length && (
+        {books.length > 0 && (
           <div>
             {shelfs.map((shelf, index) => {
               const shelfBooks = books.filter((b) => b.shelf === shelf);
@@ -39,6 +43,10 @@ function ListBook({ books, updateBooks }) {
               );
             })}
           </div>
+        )}
+
+        {books.length === 0 && (
+          <Message msg="add some book to read" type="info" />
         )}
       </div>
       <SearchButton />

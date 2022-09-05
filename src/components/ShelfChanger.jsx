@@ -1,15 +1,13 @@
 function ShelfChanger({ currentShelf, onChangeShelf }) {
   const changeShelf = (shelf) => {
-    if (shelf !== currentShelf) {
-      onChangeShelf(shelf);
-    }
+    onChangeShelf(shelf);
   };
 
   return (
     <div className="book-shelf-changer">
       <select
         onChange={(e) => changeShelf(e.target.value)}
-        value={currentShelf}
+        value={currentShelf || "none"}
       >
         <option value="none" disabled>
           Move to...
