@@ -2,9 +2,9 @@ import ShelfChanger from "./ShelfChanger";
 import * as BookAPI from "./../BooksAPI";
 
 function Book({ book, updateBooks }) {
-  const updateBookShelf = async (b, shelf) => {
-    await BookAPI.update(b.id, shelf);
-    updateBooks(b);
+  const updateBookShelf = (shelf) => {
+    book.shelf = shelf;
+    updateBooks(book, shelf);
   };
 
   return (
@@ -21,7 +21,7 @@ function Book({ book, updateBooks }) {
         <ShelfChanger
           currentShelf={book.shelf}
           book={book}
-          updateBookShelf={updateBookShelf}
+          onChangeShelf={updateBookShelf}
         />
       </div>
       <div className="book-title">{book.title}</div>

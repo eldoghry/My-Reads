@@ -1,8 +1,7 @@
-function ShelfChanger({ currentShelf, book, updateBookShelf }) {
+function ShelfChanger({ currentShelf, onChangeShelf }) {
   const changeShelf = (shelf) => {
     if (shelf !== currentShelf) {
-      book.shelf = shelf;
-      updateBookShelf(book, shelf);
+      onChangeShelf(shelf);
     }
   };
 

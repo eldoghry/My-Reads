@@ -1,12 +1,6 @@
 import Book from "./Book";
 
 function BookShelf({ shelfBooks, title, updateBooks }) {
-  /*
-        need:
-        - shelf title
-        - books    
-    */
-
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{title}</h2>

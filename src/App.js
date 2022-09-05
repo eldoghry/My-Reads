@@ -8,9 +8,16 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   const [books, setBooks] = useState([]);
 
-  const updateBooks = (newBook) => {
-    const otherBooks = books.filter((b) => b.id !== newBook.id);
-    setBooks([...otherBooks, newBook]);
+  const updateBooks = async (newBook, newShelf) => {
+    await BookAPI.update(newBook, newShelf);
+    const res = await BookAPI.getAll();
+    setBooks([...res]);
+
+    // const otherBooks = books.filter((b) => b.id !== newBook.id);
+    // setBooks([...otherBooks, newBook]);
+    // console.log("updated book", newBook);
+    console.log("front books", books);
+    // await refresh();
   };
 
   useEffect(() => {
@@ -19,7 +26,8 @@ function App() {
     if (!mounted) {
       const allBooks = async () => {
         const res = await BookAPI.getAll();
-        setBooks(res);
+        setBooks([...res]);
+        console.log(books);
         console.log("mounted, load once");
       };
 
