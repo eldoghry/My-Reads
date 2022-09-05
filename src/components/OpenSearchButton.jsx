@@ -1,7 +1,9 @@
-function OpenSearchButton({ gotToSearchPage }) {
+import { Link } from "react-router-dom";
+
+function OpenSearchButton() {
   return (
     <div className="open-search">
-      <a onClick={gotToSearchPage}>Add a book</a>
+      <Link to="/search">Add a book</Link>
     </div>
   );
 }

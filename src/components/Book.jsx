@@ -1,7 +1,12 @@
 import ShelfChanger from "./ShelfChanger";
+import * as BookAPI from "./../BooksAPI";
 
 function Book({ book }) {
-  console.log(book);
+  const updateBookShelf = async (b, shelf) => {
+    const res = await BookAPI.update(b.id, shelf);
+    console.log(res);
+  };
+
   return (
     <div className="book">
       <div className="book-top">
@@ -13,7 +18,11 @@ function Book({ book }) {
             backgroundImage: `url("${book.imageLinks.smallThumbnail}")`,
           }}
         ></div>
-        <ShelfChanger currentShelf={book.shelf} />
+        <ShelfChanger
+          currentShelf={book.shelf}
+          book={book}
+          updateBookShelf={updateBookShelf}
+        />
       </div>
       <div className="book-title">{book.title}</div>
       <div className="book-authors">{book.authors.join(", ")}</div>

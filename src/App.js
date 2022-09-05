@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import SearchForm from "./components/SearchForm";
 import ListBook from "./components/ListBook";
 import * as BookAPI from "./BooksAPI";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function App() {
       const allBooks = async () => {
         const res = await BookAPI.getAll();
         setBooks(res);
-        console.log(books);
+        console.log("mounted, load once");
       };
 
       allBooks();
@@ -23,25 +23,16 @@ function App() {
 
     return () => {
       mounted = true;
+      console.log("unmounted");
     };
   }, []);
 
-  // if (!books.length) {
-  //   return <p>Looding ...</p>;
-  // }
-
   return (
     <div className="app">
-      {showSearchPage ? (
-        <SearchForm
-          gotToSearchPage={() => setShowSearchpage(!showSearchPage)}
-        />
-      ) : (
-        <ListBook
-          books={books}
-          gotToSearchPage={() => setShowSearchpage(!showSearchPage)}
-        />
-      )}
+      <Routes>
+        <Route path="/" exact element={<ListBook books={books} />} />
+        <Route path="/search" element={<SearchForm />} />
+      </Routes>
     </div>
   );
 }

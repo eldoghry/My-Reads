@@ -1,0 +1,35 @@
+[33mcommit bf8e1a853bb2c7bbf0ccc6335e6e4f126d3ce4e7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: mma-90 <moh.mag.ali@gmail.com>
+Date:   Sun Sep 4 15:42:53 2022 +0200
+
+    feat: add loader components
+
+[33mcommit 16a80473e11d5c288592826c28d4e7dbaf759dbc[m
+Author: mma-90 <moh.mag.ali@gmail.com>
+Date:   Sun Sep 4 15:23:44 2022 +0200
+
+    feat: fetching books from api
+
+[33mcommit eebe1d6116e65cd915a7dac124adbc969ed35a9f[m
+Author: mma-90 <moh.mag.ali@gmail.com>
+Date:   Sun Sep 4 12:51:40 2022 +0200
+
+    refactor: passing props to some components
+
+[33mcommit da1c72b23384fde9f261e403d2b5e527b86450f1[m
+Author: mma-90 <moh.mag.ali@gmail.com>
+Date:   Sun Sep 4 03:35:29 2022 +0200
+
+    refactor:create more components
+
+[33mcommit 05de7e6e457864ec36af3a654100868d4d5cbc9b[m
+Author: mma-90 <moh.mag.ali@gmail.com>
+Date:   Sun Sep 4 03:15:56 2022 +0200
+
+    refactor:split main code to components
+
+[33mcommit 6a9e3f4ead751235379b94cf6bd4ef47040e4fbb[m
+Author: mma-90 <moh.mag.ali@gmail.com>
+Date:   Sun Sep 4 02:49:23 2022 +0200
+
+    initialization

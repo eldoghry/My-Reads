@@ -1,12 +1,13 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-function SearchForm({ gotToSearchPage }) {
+function SearchForm() {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a className="close-search" onClick={gotToSearchPage}>
+        <Link to="/" className="close-search">
           Close
-        </a>
+        </Link>
+
         <div className="search-books-input-wrapper">
           <input type="text" placeholder="Search by title, author, or ISBN" />
         </div>
