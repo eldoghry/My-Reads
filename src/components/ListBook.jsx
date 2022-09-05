@@ -3,6 +3,7 @@ import BookShelf from "./BookShelf";
 import Loader from "./Loader";
 import Message from "./Message";
 import SearchButton from "./SearchButton";
+import PropTypes from "prop-types";
 
 const normalizeTitle = (str) => {
   let s = str.replace(/([A-Z]+)/g, " $1");
@@ -53,5 +54,10 @@ function ListBook({ books, updateBooks }) {
     </div>
   );
 }
+
+ListBook.prototype = {
+  books: PropTypes.array.isRequired,
+  updateBooks: PropTypes.func.isRequired,
+};
 
 export default ListBook;

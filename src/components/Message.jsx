@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Message({ msg, type }) {
   return (
@@ -9,5 +10,10 @@ function Message({ msg, type }) {
     </div>
   );
 }
+
+Message.prototype = {
+  msg: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default Message;

@@ -4,6 +4,7 @@ import BookGrid from "./BookGrid";
 import * as BookAPI from "./../BooksAPI";
 import Loader from "./Loader";
 import Message from "./Message";
+import PropTypes from "prop-types";
 
 function SearchForm({ updateBooks }) {
   const [search, setSearch] = useState("");
@@ -69,5 +70,9 @@ function SearchForm({ updateBooks }) {
     </div>
   );
 }
+
+SearchForm.prototype = {
+  updateBooks: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

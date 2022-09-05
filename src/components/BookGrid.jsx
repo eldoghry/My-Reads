@@ -1,4 +1,5 @@
 import Book from "./Book";
+import PropTypes from "prop-types";
 
 function BookGrid({ books, updateBooks }) {
   return (
@@ -11,5 +12,10 @@ function BookGrid({ books, updateBooks }) {
     </ol>
   );
 }
+
+BookGrid.prototype = {
+  books: PropTypes.array.isRequired,
+  updateBooks: PropTypes.func.isRequired,
+};
 
 export default BookGrid;

@@ -1,4 +1,5 @@
 import BookGrid from "./BookGrid";
+import PropTypes from "prop-types";
 
 function BookShelf({ shelfBooks, title, updateBooks }) {
   return (
@@ -10,5 +11,11 @@ function BookShelf({ shelfBooks, title, updateBooks }) {
     </div>
   );
 }
+
+BookShelf.prototype = {
+  shelfBooks: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  updateBooks: PropTypes.func.isRequired,
+};
 
 export default BookShelf;

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function ShelfChanger({ currentShelf, onChangeShelf }) {
   const changeShelf = (shelf) => {
     onChangeShelf(shelf);
@@ -20,5 +22,10 @@ function ShelfChanger({ currentShelf, onChangeShelf }) {
     </div>
   );
 }
+
+ShelfChanger.prototype = {
+  currentShelf: PropTypes.string.isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+};
 
 export default ShelfChanger;
