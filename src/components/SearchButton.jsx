@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function OpenSearchButton() {
+function SearchButton() {
   return (
     <div className="open-search">
       <Link to="/search">Add a book</Link>
@@ -8,4 +8,4 @@ function OpenSearchButton() {
   );
 }
 
-export default OpenSearchButton;
+export default SearchButton;

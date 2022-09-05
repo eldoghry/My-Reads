@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BookShelf from "./BookShelf";
 import Loader from "./Loader";
-import OpenSearchButton from "./OpenSearchButton";
+import SearchButton from "./SearchButton";
 
 function ListBook({ books }) {
   const [shelfs, setShelfs] = useState([]);
@@ -36,7 +36,7 @@ function ListBook({ books }) {
           </div>
         )}
       </div>
-      <OpenSearchButton/>
+      <SearchButton/>
     </div>
   );
 }
