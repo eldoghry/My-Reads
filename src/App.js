@@ -8,6 +8,11 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   const [books, setBooks] = useState([]);
 
+  const updateBooks = (newBook) => {
+    const otherBooks = books.filter((b) => b.id !== newBook.id);
+    setBooks([...otherBooks, newBook]);
+  };
+
   useEffect(() => {
     let mounted = false;
 
@@ -30,7 +35,11 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" exact element={<ListBook books={books} />} />
+        <Route
+          path="/"
+          exact
+          element={<ListBook books={books} updateBooks={updateBooks} />}
+        />
         <Route path="/search" element={<SearchForm />} />
       </Routes>
     </div>

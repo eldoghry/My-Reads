@@ -3,7 +3,7 @@ import BookShelf from "./BookShelf";
 import Loader from "./Loader";
 import SearchButton from "./SearchButton";
 
-function ListBook({ books }) {
+function ListBook({ books, updateBooks }) {
   const [shelfs, setShelfs] = useState([]);
 
   useEffect(() => {
@@ -29,14 +29,14 @@ function ListBook({ books }) {
                   key={index}
                   title={shelf.replace(/([A-Z]+)/g, " $1")}
                   shelfBooks={shelfBooks}
-                  
+                  updateBooks={updateBooks}
                 />
               );
             })}
           </div>
         )}
       </div>
-      <SearchButton/>
+      <SearchButton />
     </div>
   );
 }

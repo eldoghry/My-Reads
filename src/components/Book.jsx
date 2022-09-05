@@ -1,10 +1,10 @@
 import ShelfChanger from "./ShelfChanger";
 import * as BookAPI from "./../BooksAPI";
 
-function Book({ book }) {
+function Book({ book, updateBooks }) {
   const updateBookShelf = async (b, shelf) => {
-    const res = await BookAPI.update(b.id, shelf);
-    console.log(res);
+    await BookAPI.update(b.id, shelf);
+    updateBooks(b);
   };
 
   return (

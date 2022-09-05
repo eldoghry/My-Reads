@@ -1,6 +1,6 @@
 import Book from "./Book";
 
-function BookShelf({ shelfBooks, title }) {
+function BookShelf({ shelfBooks, title, updateBooks }) {
   /*
         need:
         - shelf title
@@ -14,7 +14,7 @@ function BookShelf({ shelfBooks, title }) {
         <ol className="books-grid">
           {shelfBooks.map((book) => (
             <li key={book.id}>
-              <Book key={book.id} book={book} />
+              <Book key={book.id} book={book} updateBooks={updateBooks} />
             </li>
           ))}
         </ol>
