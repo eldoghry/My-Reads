@@ -4,6 +4,7 @@ import SearchForm from "./components/SearchForm";
 import ListBook from "./components/ListBook";
 import * as BookAPI from "./BooksAPI";
 import { Routes, Route } from "react-router-dom";
+import BookDetails from "./components/BookDetails";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -42,8 +43,12 @@ function App() {
         />
         <Route
           path="/search"
-          element={<SearchForm findMybook={findBook} updateBooks={updateBooks} />}
+          element={
+            <SearchForm findMybook={findBook} updateBooks={updateBooks} />
+          }
         />
+
+        <Route path="/book/:id" element={<BookDetails />} />
       </Routes>
     </div>
   );

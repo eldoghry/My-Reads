@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import Message from "./Message";
 import SearchButton from "./SearchButton";
 import PropTypes from "prop-types";
+import { Header } from "./Header";
 
 const normalizeTitle = (str) => {
   let s = str.replace(/([A-Z]+)/g, " $1");
@@ -23,9 +24,7 @@ function ListBook({ books, updateBooks }) {
 
   return (
     <div className="list-books">
-      <div className="list-books-title">
-        <h1>MyReads</h1>
-      </div>
+      <Header />
       <div className="list-books-content">
         {isLoading && <Loader />}
 
