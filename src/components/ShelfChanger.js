@@ -1,6 +1,29 @@
 import PropTypes from "prop-types";
 
 function ShelfChanger({ currentShelf, onChangeShelf }) {
+  const shelves = [
+    {
+      id: 1,
+      shelfName: "currentReading",
+      shelfDisplayName: "Currently Reading",
+    },
+    {
+      id: 2,
+      shelfName: "wantToRead",
+      shelfDisplayName: "Want to Read",
+    },
+    {
+      id: 3,
+      shelfName: "read",
+      shelfDisplayName: "Read",
+    },
+    {
+      id: 4,
+      shelfName: "none",
+      shelfDisplayName: "None",
+    },
+  ];
+
   const changeShelf = (shelf) => {
     onChangeShelf(shelf);
   };
@@ -11,13 +34,11 @@ function ShelfChanger({ currentShelf, onChangeShelf }) {
         onChange={(e) => changeShelf(e.target.value)}
         value={currentShelf || "none"}
       >
-        <option value="none" disabled>
-          Move to...
-        </option>
-        <option value="currentlyReading">Currently Reading</option>
-        <option value="wantToRead">Want to Read</option>
-        <option value="read">Read</option>
-        <option value="none">None</option>
+        <option disabled>Move to...</option>
+
+        {shelves.map((shelf) => (
+          <option value={shelf.shelfName}>{shelf.shelfDisplayName}</option>
+        ))}
       </select>
     </div>
   );
