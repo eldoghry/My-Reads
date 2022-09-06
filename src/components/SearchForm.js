@@ -6,25 +6,28 @@ import Loader from "./Loader";
 import Message from "./Message";
 import PropTypes from "prop-types";
 
+let debounce; // used for debounce feature
+
 function SearchForm({ findMybook, updateBooks }) {
-  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
+  const [returnedBooks, setReturnedBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState([]);
   const [error, setError] = useState("");
 
   const handleSearch = async (e) => {
-    setSearch(e.target.value.toLowerCase().trim());
+    setQuery(e.target.value.toLowerCase().trim());
   };
 
   useEffect(() => {
-    setQuery([]);
+    setReturnedBooks([]);
     setError("");
-    let debounce;
+    clearTimeout(debounce);
 
-    if (search.length) {
+    if (query.length) {
       setIsLoading(true);
+
       const searchBook = async () => {
-        const res = await BookAPI.search(search, 20);
+        const res = await BookAPI.search(query, 20);
         setIsLoading(false);
 
         if (!res.error) {
@@ -35,27 +38,26 @@ function SearchForm({ findMybook, updateBooks }) {
             }
             return b;
           });
-          setQuery([...shelfingBooks]);
+
+          setReturnedBooks([...shelfingBooks]);
           setError("");
         } else {
-          setQuery([]);
           setError(res.error);
+          setReturnedBooks([]);
         }
       };
 
-      debounce = setTimeout(searchBook, 300);
-      // searchBook();
+      debounce = setTimeout(searchBook, 500);
     } else {
-      setQuery([]);
-      clearTimeout(debounce);
+      setReturnedBooks([]);
     }
-  }, [search]);
+  }, [query]);
 
   return (
     <div className="search-books">
       <div className="search-books-bar">
         <Link to="/" className="close-search">
-          Closex
+          Close
         </Link>
 
         <div className="search-books-input-wrapper">
@@ -75,7 +77,7 @@ function SearchForm({ findMybook, updateBooks }) {
         )}
 
         {query && query.length > 0 && (
-          <BookGrid books={query} updateBooks={updateBooks} />
+          <BookGrid books={returnedBooks} updateBooks={updateBooks} />
         )}
       </div>
     </div>

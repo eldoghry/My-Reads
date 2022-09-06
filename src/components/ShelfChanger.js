@@ -37,7 +37,9 @@ function ShelfChanger({ currentShelf, onChangeShelf }) {
         <option disabled>Move to...</option>
 
         {shelves.map((shelf) => (
-          <option value={shelf.shelfName}>{shelf.shelfDisplayName}</option>
+          <option key={shelf.id} value={shelf.shelfName}>
+            {shelf.shelfDisplayName}
+          </option>
         ))}
       </select>
     </div>
