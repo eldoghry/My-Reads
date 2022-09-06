@@ -4,7 +4,7 @@ function ShelfChanger({ currentShelf, onChangeShelf }) {
   const shelves = [
     {
       id: 1,
-      shelfName: "currentReading",
+      shelfName: "currentlyReading",
       shelfDisplayName: "Currently Reading",
     },
     {

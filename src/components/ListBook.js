@@ -6,20 +6,31 @@ import SearchButton from "./SearchButton";
 import PropTypes from "prop-types";
 import { Header } from "./Header";
 
-const normalizeTitle = (str) => {
-  let s = str.replace(/([A-Z]+)/g, " $1");
-  return s[0].toUpperCase().concat(s.slice(1));
-};
-
 function ListBook({ books, updateBooks }) {
-  const [shelfs, setShelfs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const shelves = [
+    {
+      id: 1,
+      shelfName: "currentlyReading",
+      shelfDisplayName: "Currently Reading",
+    },
+    {
+      id: 2,
+      shelfName: "wantToRead",
+      shelfDisplayName: "Want to Read",
+    },
+    {
+      id: 3,
+      shelfName: "read",
+      shelfDisplayName: "Read",
+    },
+  ];
 
   useEffect(() => {
     setIsLoading(true);
-    const uniqueShelfs = [...new Set(books.map((b) => b.shelf))];
-    setShelfs(uniqueShelfs);
-    setIsLoading(false);
+    if (books.length) {
+      setIsLoading(false);
+    }
   }, [books]);
 
   return (
@@ -30,13 +41,15 @@ function ListBook({ books, updateBooks }) {
 
         {books.length > 0 && (
           <div>
-            {shelfs.map((shelf, index) => {
-              const shelfBooks = books.filter((b) => b.shelf === shelf);
+            {shelves.map((shelf) => {
+              const shelfBooks = books.filter(
+                (b) => b.shelf === shelf.shelfName
+              );
 
               return (
                 <BookShelf
-                  key={index}
-                  title={normalizeTitle(shelf)}
+                  key={shelf.id}
+                  title={shelf.shelfDisplayName}
                   shelfBooks={shelfBooks}
                   updateBooks={updateBooks}
                 />
