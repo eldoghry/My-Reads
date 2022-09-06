@@ -13,6 +13,8 @@ function App() {
     setBooks([...books.filter((b) => b.id !== newBook.id), newBook]);
   };
 
+  const findBook = (id) => books.find((b) => b.id === id);
+
   useEffect(() => {
     let mounted = false;
 
@@ -40,7 +42,7 @@ function App() {
         />
         <Route
           path="/search"
-          element={<SearchForm myBooks={books} updateBooks={updateBooks} />}
+          element={<SearchForm findMybook={findBook} updateBooks={updateBooks} />}
         />
       </Routes>
     </div>

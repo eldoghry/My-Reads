@@ -6,15 +6,14 @@ import Loader from "./Loader";
 import Message from "./Message";
 import PropTypes from "prop-types";
 
-function SearchForm({ updateBooks }) {
+function SearchForm({ findMybook, updateBooks }) {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState([]);
   const [error, setError] = useState("");
 
   const handleSearch = async (e) => {
-    const value = e.target.value.toLowerCase().trim();
-    if (value !== "") setSearch(e.target.value.toLowerCase().trim());
+    setSearch(e.target.value.toLowerCase().trim());
   };
 
   useEffect(() => {
@@ -28,7 +27,14 @@ function SearchForm({ updateBooks }) {
         setIsLoading(false);
 
         if (!res.error) {
-          setQuery([...res]);
+          const shelfingBooks = res.map((b) => {
+            const shelfed = findMybook(b.id);
+            if (shelfed) {
+              return { ...b, shelf: shelfed.shelf };
+            }
+            return b;
+          });
+          setQuery([...shelfingBooks]);
           setError("");
         } else {
           setQuery([]);
@@ -37,6 +43,8 @@ function SearchForm({ updateBooks }) {
       };
 
       searchBook();
+    } else {
+      setQuery([]);
     }
   }, [search]);
 
@@ -44,7 +52,7 @@ function SearchForm({ updateBooks }) {
     <div className="search-books">
       <div className="search-books-bar">
         <Link to="/" className="close-search">
-          Close
+          Closex
         </Link>
 
         <div className="search-books-input-wrapper">
@@ -72,6 +80,7 @@ function SearchForm({ updateBooks }) {
 }
 
 SearchForm.prototype = {
+  findMybook: PropTypes.func.isRequired,
   updateBooks: PropTypes.func.isRequired,
 };
 

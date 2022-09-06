@@ -15,7 +15,7 @@ function Book({ book, updateBooks }) {
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url("${book.imageLinks.smallThumbnail}")`,
+            backgroundImage: `url("${book.imageLinks?.smallThumbnail}")`,
           }}
         ></div>
         <ShelfChanger
@@ -24,7 +24,7 @@ function Book({ book, updateBooks }) {
           onChangeShelf={updateBookShelf}
         />
       </div>
-      <div className="book-title">{book.title}</div>
+      <div className="book-title">{book?.title}</div>
       <div className="book-authors">
         {book.authors?.length && book.authors.join(", ")}
       </div>
