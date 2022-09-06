@@ -19,6 +19,7 @@ function SearchForm({ findMybook, updateBooks }) {
   useEffect(() => {
     setQuery([]);
     setError("");
+    let debounce;
 
     if (search.length) {
       setIsLoading(true);
@@ -42,9 +43,11 @@ function SearchForm({ findMybook, updateBooks }) {
         }
       };
 
-      searchBook();
+      debounce = setTimeout(searchBook, 300);
+      // searchBook();
     } else {
       setQuery([]);
+      clearTimeout(debounce);
     }
   }, [search]);
 
