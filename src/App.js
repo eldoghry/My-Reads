@@ -10,8 +10,7 @@ function App() {
 
   const updateBooks = async (newBook, newShelf) => {
     await BookAPI.update(newBook, newShelf);
-    const res = await BookAPI.getAll();
-    setBooks([...res]);
+    setBooks([...books.filter((b) => b.id !== newBook.id), newBook]);
   };
 
   useEffect(() => {
@@ -41,7 +40,7 @@ function App() {
         />
         <Route
           path="/search"
-          element={<SearchForm updateBooks={updateBooks} />}
+          element={<SearchForm myBooks={books} updateBooks={updateBooks} />}
         />
       </Routes>
     </div>

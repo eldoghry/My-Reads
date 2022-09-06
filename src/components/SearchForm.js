@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BookGrid from "./BookGrid";
-import * as BookAPI from "./../BooksAPI";
+import * as BookAPI from "../BooksAPI";
 import Loader from "./Loader";
 import Message from "./Message";
 import PropTypes from "prop-types";
