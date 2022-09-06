@@ -19,7 +19,7 @@ function BookPage({ book }) {
         </a>
 
         <Link to="/" className="btn">
-          going back
+           back
         </Link>
       </div>
       <div className="book-right">
