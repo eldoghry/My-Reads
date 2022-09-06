@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function BookPage({ book }) {
-  console.log(book);
   return (
     <div className="book-container">
       <div className="book-left">
